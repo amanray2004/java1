@@ -411,12 +411,11 @@
 //   return 0;
 // }
 
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-
 struct node {
   char data;
-//  int prec;
   struct node *next;
 } *top = NULL;
 
@@ -486,7 +485,10 @@ int precedence(char a) {
 
 void infixtopostfix(char arr[], char narr[]) {
   int i = 0, j = 0;
+  char l, k;
   while (arr[i] != '\0') {
+    l = arr[i];
+    k = narr[j];
     if (isalpha(arr[i]) || isdigit(arr[i])) {
       narr[j++] = arr[i++];
     } else if (isOperator(arr[i])) {
@@ -495,9 +497,9 @@ void infixtopostfix(char arr[], char narr[]) {
       } else {
         push(arr[i++]);
       }
-    } else {
-      i++;
-    }
+    } // else {
+      // i++;
+    // }
   }
   while (top != NULL) {
     narr[j++] = pop();
