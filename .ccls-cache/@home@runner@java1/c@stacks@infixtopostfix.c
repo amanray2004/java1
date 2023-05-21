@@ -507,36 +507,35 @@ void infixtopostfix(char arr[], char narr[]) {
   narr[j] = '\0';
 }
 
+int Eval(char *postfix) {
+  int i = 0;
+  int x1, x2, r = 0;
 
-
-int Eval(char *postfix)
-{
- int i=0;
- int x1,x2,r=0 ;
- 
- for(i=0;postfix[i]!='\0';i++)
- {
- if(isOperand(postfix[i]))
- {
- push(postfix[i]-'0');
- }
- else
- {
- x2=pop();x1=pop();
- switch(postfix[i])
- {
- case '+':r=x1+x2; break;
- case '-':r=x1-x2; break;
- case '*':r=x1*x2; break;
- case '/':r=x1/x2; break;
- }
- push(r);
- }
- }
- return top->data;
+  for (i = 0; postfix[i] != '\0'; i++) {
+    if (isOperand(postfix[i])) {
+      push(postfix[i] - '0');
+    } else {
+      x2 = pop();
+      x1 = pop();
+      switch (postfix[i]) {
+      case '+':
+        r = x1 + x2;
+        break;
+      case '-':
+        r = x1 - x2;
+        break;
+      case '*':
+        r = x1 * x2;
+        break;
+      case '/':
+        r = x1 / x2;
+        break;
+      }
+      push(r);
+    }
+  }
+  return top->data;
 }
-
-
 
 int main() {
   char arr[] = "a+b*c-d/e";
@@ -549,24 +548,38 @@ int main() {
   return 0;
 }
 
+// working of the postfix_evaluation function:
+//  Certainly! Let's go through the working of the code step by step:
 
+// The Eval function takes a postfix expression as input and evaluates it to
+// obtain the result.
 
+// It initializes the variables i, x1, x2, and r to 0. i is used as a loop
+// counter, while x1, x2, and r are used to store intermediate and final results
+// during the evaluation.
 
-//working of the postfix_evaluation function:
-// Certainly! Let's go through the working of the code step by step:
+// The for loop iterates over each character in the postfix expression until the
+// null terminator is encountered.
 
-// The Eval function takes a postfix expression as input and evaluates it to obtain the result.
+// If the current character is an operand (a digit), it is converted from a
+// character to an integer by subtracting the ASCII value of '0'. The resulting
+// integer is then pushed onto the stack using the push function.
 
-// It initializes the variables i, x1, x2, and r to 0. i is used as a loop counter, while x1, x2, and r are used to store intermediate and final results during the evaluation.
-
-// The for loop iterates over each character in the postfix expression until the null terminator is encountered.
-
-// If the current character is an operand (a digit), it is converted from a character to an integer by subtracting the ASCII value of '0'. The resulting integer is then pushed onto the stack using the push function.
-
-// If the current character is an operator (+, -, *, /), it means that two operands should be popped from the stack and the corresponding operation should be performed. The second operand (x2) is popped first, followed by the first operand (x1). The operation is performed based on the operator using a switch statement, and the result (r) is calculated.
+// If the current character is an operator (+, -, *, /), it means that two
+// operands should be popped from the stack and the corresponding operation
+// should be performed. The second operand (x2) is popped first, followed by the
+// first operand (x1). The operation is performed based on the operator using a
+// switch statement, and the result (r) is calculated.
 
 // The calculated result (r) is then pushed back onto the stack.
 
-// After the for loop completes, the final result is stored in the data field of the top node of the stack, which represents the evaluated value of the postfix expression. It is returned as the result of the Eval function.
+// After the for loop completes, the final result is stored in the data field of
+// the top node of the stack, which represents the evaluated value of the
+// postfix expression. It is returned as the result of the Eval function.
 
-// Note: This code assumes that the stack is already initialized and contains the required functions isOperand, push, and pop.
+// Note: This code assumes that the stack is already initialized and contains
+// the required functions isOperand, push, and pop.
+
+// in the EVALUATION FUNCTION U NEED AN INT TYPE STACK ,BUT FOR INFIX TO POSTFIX
+// FUNCTION YOU NEED AN CHARACTER TYPE STACK.SO YOU CANNOT MERGE THE TWO CODES
+// IN ONE PROGRAM .OR YOU ILL HAVE TO CREATE TWO STACKS
