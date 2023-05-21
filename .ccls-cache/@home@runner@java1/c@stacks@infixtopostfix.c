@@ -8,8 +8,6 @@
 //   struct node *next;
 // } * top=NULL;
 
-
-
 // int isOperator(char ch) {
 //   if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
 //     return 1;
@@ -18,12 +16,11 @@
 //   }
 // }
 
-
 // void push(char x)
 // {
 //   struct node *t;
 //   t=(struct node*)malloc(sizeof(struct node));
- 
+
 //  if(t==NULL)
 //  printf("stack is full\n");
 //  else
@@ -32,9 +29,8 @@
 //  t->next=top;
 //  top=t;
 //  }
- 
-// }
 
+// }
 
 // void Display()
 // {
@@ -52,7 +48,7 @@
 // {
 //  struct node *t;
 //  int x='n';
- 
+
 //  if(top==NULL)
 //  printf("Stack is Empty\n");
 //  else
@@ -71,8 +67,6 @@
 //   }
 //   return 'n';
 // }
-
-
 
 // int precedence(char a) {
 
@@ -95,7 +89,7 @@
 //     int i=0, a = 0;
 //     struct node * p;
 //     while (arr[i] != '\0') {
-      
+
 //       a = precedence(arr[i]);
 //       if(peektop()!='n'){
 //         p = (struct node *)malloc(sizeof(struct node));
@@ -121,7 +115,7 @@
 //           free(p);
 //           i++;
 //           continue;
-        
+
 //         }
 //       }
 //       i++;
@@ -133,7 +127,7 @@
 //     free(p);
 //     i++;
 //   }
-  
+
 //   narr[i] = '\0';
 //   }
 // int main() {
@@ -149,8 +143,6 @@
 
 //   return 0;
 // }
-
-
 
 // #include <ctype.h>
 // #include <stdio.h>
@@ -284,16 +276,6 @@
 //   return 0;
 // }
 
-
-
-
-
-
-
-
-
-
-
 // #include <ctype.h>
 // #include <stdio.h>
 // #include <stdlib.h>
@@ -384,7 +366,7 @@
 //     } else {
 //       if (top == NULL)
 //         break; // Operator stack is empty, break the loop
-      
+
 //       p = top;
 //       if (p->prec <= precedence(arr[i])) { // Modified condition
 //         q = (struct node *)malloc(sizeof(struct node));
@@ -415,7 +397,6 @@
 //   narr[i] = '\0';
 // }
 
-
 // int main() {
 //   char arr[]="a+b*c-d/e";
 //   char narr[100];
@@ -430,17 +411,12 @@
 //   return 0;
 // }
 
-
-
-
-
-
 #include <stdio.h>
 #include <stdlib.h>
 
 struct node {
   char data;
-  int prec;
+//  int prec;
   struct node *next;
 } *top = NULL;
 
