@@ -1,109 +1,115 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
+#include <string.h>
 
 struct Node {
-    char data;
-    struct Node* next;
+  char data;
+  struct Node *next;
 };
 
-struct Node* top = NULL;
-
-void push(char c) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    newNode->data = c;
-    newNode->next = top;
-    top = newNode;
+struct Node *createNode(char data) {
+  struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+  newNode->data = data;
+  newNode->next = NULL;
+  return newNode;
 }
 
-char pop() {
-    if (top == NULL) {
-        printf("Stack is empty\n");
-        return '\0';
-    }
-    
-    char c = top->data;
-    struct Node* temp = top;
-    top = top->next;
-    free(temp);
-    return c;
+void push(struct Node **top, char data) {
+  struct Node *newNode = createNode(data);
+  newNode->next = *top;
+  *top = newNode;
 }
 
-char peek() {
-    if (top == NULL) {
-        printf("Stack is empty\n");
-        return '\0';
-    }
-    return top->data;
+char pop(struct Node **top) {
+  if (*top == NULL) {
+    // Handle stack underflow error
+    return '\0';
+  }
+  struct Node *temp = *top;
+  char data = temp->data;
+  *top = (*top)->next;
+  free(temp);
+  return data;
 }
 
-int isOperator(char c) {
-    return (c == '+' || c == '-' || c == '*' || c == '/');
+char peek(struct Node *top) {
+  if (top == NULL) {
+    // Handle empty stack error
+    return '\0';
+  }
+  return top->data;
 }
 
-int precedence(char c) {
-    if (c == '+' || c == '-')
-        return 1;
-    else if (c == '*' || c == '/')
-        return 2;
+int isOperand(char x) {
+  if (x == '+' || x == '-' || x == '*' || x == '/' || x == '^' || x == '(' ||
+      x == ')') {
     return 0;
+  }
+  return 1;
 }
 
-void infixToPostfix(char infix[], char postfix[]) {
-    int i = 0, j = 0;
-    
-    while (infix[i] != '\0') {
-        char currentChar = infix[i];
-        
-        if (isalnum(currentChar)) {
-            postfix[j++] = currentChar;
-        }
-        else if (isOperator(currentChar)) {
-            while (top != NULL && precedence(peek()) >= precedence(currentChar)) {
-                postfix[j++] = pop();
-            }
-            push(currentChar);
-        }
-        else if (currentChar == '(') {
-            push(currentChar);
-        }
-        else if (currentChar == ')') {
-            while (top != NULL && peek() != '(') {
-                postfix[j++] = pop();
-            }
-            if (top != NULL && peek() == '(') {
-                pop(); // Discard the '(' from stack
-            }
-            else {
-                printf("Invalid expression: Unbalanced parentheses\n");
-                return;
-            }
-        }
-        
+int outPrecedence(char x) {
+  if (x == '+' || x == '-') {
+    return 1;
+  } else if (x == '*' || x == '/') {
+    return 3;
+  } else if (x == '^') {
+    return 6;
+  } else if (x == '(') {
+    return 7;
+  } else if (x == ')') {
+    return 0;
+  }
+  return -1;
+}
+
+int inPrecedence(char x) {
+  if (x == '+' || x == '-') {
+    return 2;
+  } else if (x == '*' || x == '/') {
+    return 4;
+  } else if (x == '^') {
+    return 5;
+  } else if (x == '(') {
+    return 0;
+  }
+  return -1;
+}
+
+char *convert(char *infix) {
+  char *postfix = (char *)malloc(sizeof(char) * (strlen(infix) + 1));
+  int i = 0, j = 0;
+  struct Node *stack = NULL;
+
+  while (infix[i] != '\0') {
+    if (isOperand(infix[i])) {
+      postfix[j++] = infix[i++];
+    } else {
+      if (stack == NULL ||
+          outPrecedence(infix[i]) > inPrecedence(peek(stack))) {
+        push(&stack, infix[i++]);
+      } else if (outPrecedence(infix[i]) == inPrecedence(peek(stack))) {
+        pop(&stack);
         i++;
+      } else {
+        postfix[j++] = pop(&stack);
+      }
     }
-    
-    while (top != NULL) {
-        if (peek() == '(') {
-            printf("Invalid expression: Unbalanced parentheses\n");
-            return;
-        }
-        postfix[j++] = pop();
-    }
-    
-    postfix[j] = '\0';
+  }
+
+  while (stack != NULL) {
+    postfix[j++] = pop(&stack);
+  }
+
+  postfix[j] = '\0';
+
+  return postfix;
 }
 
 int main() {
-    char infix[100];
-    char postfix[100];
-    
-    printf("Enter an infix expression: ");
-    scanf("%[^\n]s", infix);
-    
-    infixToPostfix(infix, postfix);
-    
-    printf("Postfix expression: %s\n", postfix);
-    
-    return 0;
+  char infix[] = "((a+b)*c)-d^e^f";
+  char *postfix = convert(infix);
+  printf("Postfix Expression: %s\n", postfix);
+  free(postfix);
+  return 0;
 }
