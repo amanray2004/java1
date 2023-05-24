@@ -114,3 +114,24 @@ int main() {
   free(postfix);
   return 0;
 }
+
+
+
+// in the push function why are we creating double pointer why?
+
+// In the push function, a double pointer is used because we need to update the top pointer of the stack.
+
+// The top parameter of the push function is a pointer to a pointer to a Node struct (struct Node**). By using a double pointer, we can modify the value of the top pointer itself, not just the value of the top node.
+
+// When a new node is pushed onto the stack, we create the node using the createNode function and assign its address to the newNode pointer. Then, newNode->next is set to the current top of the stack, and finally, *top (dereferencing the double pointer) is assigned the value of newNode, updating the top of the stack to point to the new node.
+
+// Using a double pointer allows us to modify the top pointer in the push function and reflect the changes in the calling function, ensuring that the changes are preserved even after the push function returns.
+
+
+
+
+// can we do the same using single pointer because if we are passing an address to a function then changes to the address is shown to parent address
+
+// Yes, it is possible to achieve the same functionality using a single pointer instead of a double pointer.
+
+// In that case, you would need to pass the address of the top pointer to the push function. The push function would take a single pointer to a Node struct (struct Node*) as a parameter.
