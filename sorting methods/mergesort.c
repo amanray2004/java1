@@ -6,7 +6,7 @@ void merge(int ls,int re,int arr[],int mid){
   int sorted[re-ls+1];
   int i=ls;
   int j =mid+1;
-  int k;
+  int k=0;
   while(i<=mid&&j<=re){
     if (arr[i]<=arr[j]){
       sorted[k]=arr[i];
@@ -49,6 +49,6 @@ int main(){
   int arr[]={12,3,7,8,90,8766};
   mergesort(arr,0,5);
   for(int i=0;i<6;i++){
-    printf("%d",arr[i]);
+    printf("%d   ",arr[i]);
   }
 }
