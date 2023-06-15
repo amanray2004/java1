@@ -43,7 +43,8 @@ struct node *dequeue(struct queue *q) {
   struct node *temp = q->head;
   q->head = q->head->next;
   return temp;
-}
+} // i can havw made it more efficient by just storing and returning address
+  // q->head->ptr and freeing temp;
 
 int isempty(struct queue *q) { return q->head == NULL; }
 
