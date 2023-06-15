@@ -43,10 +43,10 @@ int isemptyst() {
   return 0;
 }
 
-void preorderiterative(struct dnode *ptr) {
-  struct dnode *t = ptr;
-  // pushstack(t);
-  while (ptr != NULL || !isemptyst()) {
+void preorderiterative(struct dnode *t) {
+  // struct dnode *t = ptr;
+  //  pushstack(t);
+  while (t != NULL || !isemptyst()) {
     if (t != NULL) {
       printf("%d ", t->data);
       pushstack(t);
