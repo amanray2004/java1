@@ -13,62 +13,50 @@
 // t=t->rchild;
 // }
 
-
-
-
-
-
-#include <stdio.h>
-#include<stdlib.h>
 #include "createtree.h"
-struct node * st=NULL;
-void pushstack(struct dnode* p) {
-    struct node* q = (struct node*)malloc(sizeof(struct node));
-    q->ptr = p;
-    q->next = st;
-    st = q;
+#include <stdio.h>
+#include <stdlib.h>
+struct node *st = NULL;
+void pushstack(struct dnode *p) {
+  struct node *q = (struct node *)malloc(sizeof(struct node));
+  q->ptr = p;
+  q->next = st;
+  st = q;
 }
 
-struct dnode* popstack() {
-    if (st == NULL) {
-        return NULL;
-    } else {
-        struct node* p = st;
-        st = st->next;
-        struct dnode* poppedValue = p->ptr;
-        free(p);
-        return poppedValue;
-    }
+struct dnode *popstack() {
+  if (st == NULL) {
+    return NULL;
+  } else {
+    struct node *p = st;
+    st = st->next;
+    struct dnode *poppedValue = p->ptr;
+    free(p);
+    return poppedValue;
+  }
 }
 
-int isemptyst(){
-  if(st==NULL){
+int isemptyst() {
+  if (st == NULL) {
     return 1;
   }
   return 0;
-  
 }
 
-
-
-
-void preorderiterative(struct dnode * ptr){
-  struct dnode * t=ptr;
-  pushstack(t);
-  while(!isemptyst()){
-    if(t!=NULL){
-      printf("%d ",t->data);
+void preorderiterative(struct dnode *ptr) {
+  struct dnode *t = ptr;
+  // pushstack(t);
+  while (ptr != NULL || !isemptyst()) {
+    if (t != NULL) {
+      printf("%d ", t->data);
       pushstack(t);
-      t=t->lchild;
+      t = t->lchild;
     }
 
-    else if(t==NULL){
-      t=popstack();
-      t=t->rchild;
-      
+    else if (t == NULL) {
+      t = popstack();
+      t = t->rchild;
     }
-
-    
   }
 }
 int main(void) {
@@ -76,5 +64,3 @@ int main(void) {
   preorderiterative(root);
   return 0;
 }
-
-
