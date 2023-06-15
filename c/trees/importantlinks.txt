@@ -1,0 +1,3 @@
+1)tree from traversals:
+  https://www.baeldung.com/cs/reconstruct-tree-depth-first-traversals
+  https://prepinsta.com/data-structures/construct-tree-from-given-inorder-and-preorder-traversals-in-cpp/#:~:text=A%20tree%20can%20be%20formed,preorder%20traversals%20in%20C%2B%2B.
