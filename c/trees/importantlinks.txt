@@ -1,0 +1,26 @@
+tree from traversals:
+  https://www.baeldung.com/cs/reconstruct-tree-depth-first-traversals
+  https://prepinsta.com/data-structures/construct-tree-from-given-inorder-and-preorder-traversals-in-cpp/#:~:text=A%20tree%20can%20be%20formed,preorder%20traversals%20in%20C%2B%2B.
+  https://takeuforward.org/data-structure/construct-a-binary-tree-from-inorder-and-preorder-traversal/
+  https://www.codingninjas.com/codestudio/library/construct-a-binary-tree-from-a-given-preorder-and-inorder-traversal
+  leetcode question:
+    https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+
+
+
+
+
+sde sheet:
+  https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/
+
+
+
+
+
+
+
+
+
+youtube channels:
+  take u forward
+  knowledge gate
