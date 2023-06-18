@@ -52,3 +52,10 @@ public class constructor{
         s1.greeting();
     }
 }
+
+
+
+//note:
+
+
+// the class student is static,which means that it does not need an object to access it     and the same is happening=> see u are creating Student aman =new Student();   so you are accessing Student class (as it static and does not need objects for accessing) and inside the static class ,static things can be acceseed without objects such as Student() constructor and non static things need objects like name,rno,marks that ius why object aman is created.

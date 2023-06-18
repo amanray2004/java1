@@ -20,15 +20,33 @@
 
 
 
+// public class add{
+//     int a;
+//     int b;
+
+//     public static void main(String[] args) {
+//         add a=new add();
+//         a.a=3;
+//         a.b=9;
+//         int c=a.a+a.b;
+//         System.out.println(c);
+//     }
+
+// }
+
+
+
+
+
 public class add{
-    int a;
-    int b;
+    static int a;
+    static int b;
 
     public static void main(String[] args) {
         add a=new add();
-        a.a=3;
-        a.b=9;
-        int c=a.a+a.b;
+        add.a=3;
+        add.b=9;
+        int c=add.a+add.b;
         System.out.println(c);
     }
 

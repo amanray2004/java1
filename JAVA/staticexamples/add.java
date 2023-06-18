@@ -53,13 +53,16 @@ package JAVA.staticexamples;
 
 
 //3)
-public class add{
-    static int a;
-    static int b;
+// public class add{
+//     static int a;
+//     static int b;
 
 
-    public static void main(String[] args) {
-        int c=a+b;
-        System.out.println(c);
-    }
-}
+//     public static void main(String[] args) {
+//         int c=a+b;
+//         System.out.println(c);
+//     }
+//}
+
+
+    
