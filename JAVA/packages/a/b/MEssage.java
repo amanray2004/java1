@@ -1,6 +1,6 @@
 package JAVA.packages.a.b;
 
-public class MEssage {
+public class message {
     public static void main(String[] args) {
         print();
     }
