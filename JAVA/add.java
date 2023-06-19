@@ -84,16 +84,16 @@
 
 //import static JAVA.packages.a.b.message.print;
 
-import JAVA.add.Student;
+//import JAVA.add.Student;
 public class add{
     class Student{
         String name;
         int id;
     }
-    //student aman=new student();
+    //Student aman=new Student();
     public static void main(String[] args) {
-        //Student aman=new Student();
-
+        //add a=new add();
+        add.Student aman=new add().Student();        
 
     }
 }
