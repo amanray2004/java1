@@ -29,7 +29,6 @@ public class Main {
         BinaryTree a=new BinaryTree();
         a.createbinarytree();
         a.levelprint();
-        System.out.println(max(2,3));
 
     }
 }
