@@ -100,10 +100,10 @@ public class BinaryTree {
             int leafrightsub=leafnodes(t.right);
 
             if(t.left==null && t.right==null){
-                return leafleftsub+leafrightsub;
+                return leafleftsub+leafrightsub+1;
             }
             else{
-                return leafleftsub+leafrightsub+1;
+                return leafleftsub+leafrightsub;
             }
         }
         return 0;
