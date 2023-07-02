@@ -94,6 +94,10 @@ public class BinaryTree {
         levelorder(root);
     }
 
+    private static int leafnodes(Node t){
+        
+    }
+
 }
 
 
