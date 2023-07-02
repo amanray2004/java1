@@ -95,7 +95,22 @@ public class BinaryTree {
     }
 
     private static int leafnodes(Node t){
-        
+        if(t!=null){
+            int leafleftsub=leafnodes(t.left);
+            int leafrightsub=leafnodes(t.right);
+
+            if(t.left==null && t.right==null){
+                return leafleftsub+leafrightsub;
+            }
+            else{
+                return leafleftsub+leafrightsub+1;
+            }
+        }
+        return 0;
+    }
+
+    public int countleafnodes(){
+        return leafnodes(root);
     }
 
 }
