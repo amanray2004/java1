@@ -47,7 +47,7 @@ public class Bst {
         root=insert(root,value);
     }
 
-    private void inordertraversal(Node t){
+    private static void inordertraversal(Node t){
         if(t!=null){
             inordertraversal(t.left);
             System.out.print(t.value+"--");
